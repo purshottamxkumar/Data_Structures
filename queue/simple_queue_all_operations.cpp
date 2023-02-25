@@ -26,15 +26,16 @@ void insert_element(Node **start, Node **end, int value) {
 }
 
 void delete_element(Node **start, Node **end) {
-    if(*start == NULL) return ;
-    if((*start)->next == NULL) {
-        delete *start;
+    if(*start == NULL) return ; // no node in the queue
+    if((*start)->next == NULL) { // only a single node to be deleted
+        Node *tmp = *start;
         *start = *end = NULL;
+        delete tmp;
+    } else {
+        Node *tmp = *start;
+        *start = (*start)->next;
+        delete tmp;
     }
-
-    Node *tmp = *start;
-    *start = (*start)->next;
-    delete tmp;
 }
 
 void create_queue(Node **start, Node **end) {
@@ -59,11 +60,15 @@ int count_elements(Node *start) {
 }
 
 void display_elements(Node *start) {
-    cout << "\nElements are : ";
-    while(start) {
-        cout << start->data << " ";
-        start = start->next;
-    } cout << "\n";
+    if(start) {
+        cout << "\nElements are : ";
+        while(start) {
+            cout << start->data << " ";
+            start = start->next;
+        } cout << "\n";
+    } else {
+        cout << "\nQueue is Empty\n";
+    }
 }
 
 int main() {
