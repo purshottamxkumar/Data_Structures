@@ -172,10 +172,15 @@ int main() {
             case 8: root = delete_tree(root);
             break;
 
-            case 9: exit(1);
+            case 9: break;
 
             default: cout << "\nWrong Choice\n";
         }
+
+        if(choice == 9) {
+            break;
+        }
     }
+    cout << "\n## HAPPY CODING ##\n";
     return 0;
 }
